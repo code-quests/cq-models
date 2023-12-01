@@ -1,4 +1,5 @@
 
+
 interface Scorecard {
     name: string    // unique name of the scorecard
     description: string // description of the scorecard
@@ -96,4 +97,3 @@ const scorecard_example = {
     ]
 
 } as Scorecard
-

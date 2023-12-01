@@ -1,0 +1,159 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <h1>Quest ERD</h1>
+
+    <pre class="mermaid">
+ 
+ 
+        erDiagram
+        Org ||--o{ Quest : "publishes"
+        User ||--o{ Org : "manages"
+
+        Category ||--o{ Quest : "contains"
+        
+        User ||--o{ Registration : "register in quest"
+        Quest ||--o{ Registration : "challenger register"
+        User ||--o{ Submission : "submit a solution"
+        Quest ||--o{ Submission : "challenger submit"
+
+        User ||--o{ Review : "review a submission"
+        Submission ||--o{ Review : "Reviewer review"
+        
+        Quest }o--o{ Scorecard: "scored against"
+        
+        User ||--o{ Comment : "Asks or Answers Questions"
+        Quest ||--o{ Comment: "Posts about the quest"
+        
+        
+        Prize ||--|| User: "awarded to"
+        Prize }o--|| Quest : "awarded for"
+        Prize }o--|| Org : "Paid by"
+        Prize ||--|| Submission : "awarded for"
+
+        User o|--|| BillingInfo : "has"
+ 
+        BillingInfo {
+            int *user FK
+            string full_name
+            string phone
+            string address
+            string city
+            string state
+            string country
+            string zip
+            string email
+            string phone
+            date *email_verified_on
+            date *phone_verified_on
+        }
+
+        Registration {
+            int user FK
+            int quest FK
+            bool is_invited
+            bool is_approved
+            enum status
+            string role
+            date joined_on
+        }
+
+        Submission {
+            int user FK
+            int quest FK
+            int total_score
+            date submitted_on
+            enum status
+            string note
+        }
+
+        Review {
+            int reviewer FK
+            int submission FK
+            int quest FK
+            enum status
+            json scorecard
+            int score
+            string note
+        }
+
+        Prize {
+            int org FK
+            int payee FK
+            int billing_info FK
+            string rank
+            string value
+            iso currency
+            enum status
+            date paid_on
+        }
+
+        Quest {
+            string title
+            string description
+            enum status
+            int category FK
+            int org FK
+            date created_on
+            date published_on
+            date registration_deadline
+            date submission_deadline
+            date review_deadline
+            date ended_on
+            date updated_on
+            date archived_on
+            string location
+            string max_participants
+            string min_participants
+            string[] updates
+            bool is_public
+            bool requires_approval
+        }
+
+        Category {
+            string name
+            string description
+            string icon
+            string hero_img
+        }
+
+        Scorecard {
+            string name
+            string description
+            int category FK
+            string max_score
+            string min_score
+            json questions
+        }
+
+        Comment {
+            int user FK
+            int quest FK
+            string body
+            enum status
+            date created_on
+        }
+
+        Notifications {
+            int user FK
+            string body
+            string url
+            enum status
+            date created_on
+        }
+    </pre>
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+      mermaid.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>
+
+   <!-- </pre>
+    <h1>Quest ERD</h1>
+    <pre class="mermaid">
+    erDiagram
+     -->
+

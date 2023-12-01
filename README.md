@@ -1,2 +1,2 @@
 # gists
-Gists and code snippets for quests
+Code-Quests.com Models
