@@ -34,6 +34,10 @@
         Prize ||--|| Submission : "awarded for"
 
         User o|--|| BillingInfo : "has"
+
+        User ||--o{ Feedback : "gives"
+        Submission ||--o{ Feedback : "receives"
+        Feedback ||--o{ FeedbackDetails : "contains"
  
         BillingInfo {
             int *user FK
@@ -142,6 +146,22 @@
             string url
             enum status
             date created_on
+        }
+
+        Feedback {
+            int feedback_id PK
+            int submission_id FK
+            int user_id FK
+            text additional_comments
+            datetime created_on
+        }
+    
+        FeedbackDetails {
+            int feedback_detail_id PK
+            int feedback_id FK
+            text question
+            int rating
+            text reason
         }
     </pre>
     <script type="module">

@@ -11,6 +11,7 @@ export interface Submission {
 }
 
 
+
 export interface Review {
     reviewer: User
     submission: Submission
@@ -19,4 +20,18 @@ export interface Review {
     ReviewResults: { key: string; value: string } // scorecard id of the review this is a JSON object stored in the DB, not an independent table.
     score: number // score of the review
     note: string // note from the reviewer to the client (not visible to contesntant)
+}
+
+export interface Feedback {
+    submission: Submission // submission id 
+    user: User  // user id of the user that gives the feedback 
+    created_on : Date // date of feedback 
+    additional_comments : Text // general comment  
+}
+
+export interface FeedbackDetails {
+    feedback:Feedback // feedback id 
+    question:Text // feedback question 
+    rating:number // the user rate for the question 
+    reason: Text // reason for this feedback 
 }
