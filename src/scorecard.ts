@@ -1,12 +1,14 @@
+import { Category } from "./quests"
 
 
-interface Scorecard {
+export interface Scorecard {
     name: string    // unique name of the scorecard
+    category: Category // category the scorecard belongs to
     description: string // description of the scorecard
     max_score: number   // maximum score of the scorecard (100%)
     min_score: number   // minimum score to pass the scorecard 
     questions: Question[] // list of questions in the scorecard
-}
+    }
 
 interface Question {
     key: string     // unique key of question (e.g. unit_tests_coverage, )

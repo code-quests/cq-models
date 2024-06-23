@@ -1,3 +1,6 @@
+
+import {Scorecard} from "./scorecard"
+
 export interface Org {
     name: string; // display name of the org
     description: string; 
@@ -47,44 +50,46 @@ export interface Category {
     cover_img: string    // url to hero image for the category page
 }
 
-
-export interface Quest {
+export interface Quest{
     title: string
-    status: "draft" | "published" | "archived"; // status of quest: draft, published, archived, ended, deleted
-    type: "contest" | "race"; // type of quest
-    phase: "registration" | "submission" | "review" | "ended"; // phase of quest
-    hero_img: string
-    icon: string
-
-    // Foriegn keys
-    scorecard: Scorecard
-    category: Category
-    org: Org
-    manager: User
-
-    // Tasks
-    description: string
-    tasks: string[]
-
-    // Dates
-    created_on: Date
-    published_on: Date
-    registration_deadline: Date
-    submission_deadline: Date
-    review_deadline: Date
-    ended_on: Date
-    updated_on: Date
-    archived_on: Date
-
-    // Restrictions
-    location: string
-    max_participants: string
-    min_participants: string
-    updates: string[]
-    is_public: boolean
-    requires_approval: boolean
-}
-
+      status: "draft" | "published" | "archived"; // status of quest: draft, published, archived, ended, deleted
+      type: "contest" | "race"; // type of quest
+      phase: "registration" | "submission" | "review" | "ended"; // phase of quest
+      hero_img: string
+      icon: string
+  
+      // Foriegn keys
+      scorecard: Scorecard
+      category: Category
+      org: Org
+      manager: User
+  
+      // Tasks
+      description: string
+      tasks: string[]
+      requirements: string[]
+      acceptanceCriteria: string[]
+      technologies: string[]
+  
+      // Dates
+      created_on: Date
+      published_on: Date
+      registration_deadline: Date
+      submission_deadline: Date
+      review_deadline: Date
+      ended_on: Date
+      updated_on: Date
+      archived_on: Date
+  
+      // Restrictions
+      location: string
+      max_participants: string
+      min_participants: string
+      updates: string[]
+      is_public: boolean
+      requires_approval: boolean
+      }
+      
 
 export interface Comment {
     user: User
