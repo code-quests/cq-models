@@ -37,7 +37,7 @@
 
         User ||--o{ Feedback : "gives"
         Submission ||--o{ Feedback : "receives"
-        Feedback ||--o{ FeedbackDetails : "contains"
+        
  
         BillingInfo {
             int *user FK
@@ -152,16 +152,16 @@
             int feedback_id PK
             int submission_id FK
             int user_id FK
-            text additional_comments
-            datetime created_on
+            date created_on
+            int data_rating 
+            string data_reason
+            int prize_rating
+            string prize_reason 
+            int interaction_rating
+            string interaction_reason  
+            string additional_comments
         }
-    
-        FeedbackDetails {
-            int feedback_detail_id PK
-            int feedback_id FK
-            text question
-            int rating
-            text reason
+
         }
     </pre>
     <script type="module">

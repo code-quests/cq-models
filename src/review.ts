@@ -8,6 +8,7 @@ export interface Submission {
     status: "pending" | "approved" | "rejected"; // status of submission: pending to be reviewd, approved and scored, rejected failed the review
     note: string // note from the contestant to the reviewers
     file_url: string // url to the submission file on S3
+    video_url: string // url to the submission Video walkthrough  
 }
 
 
@@ -26,12 +27,11 @@ export interface Feedback {
     submission: Submission // submission id 
     user: User  // user id of the user that gives the feedback 
     created_on : Date // date of feedback 
-    additional_comments : Text // general comment  
-}
-
-export interface FeedbackDetails {
-    feedback:Feedback // feedback id 
-    question:Text // feedback question 
-    rating:number // the user rate for the question 
-    reason: Text // reason for this feedback 
+    data_rating: number // rating for the provided data for the quest
+    data_reason: string 
+    prize_rating: number // rating for the quest prize
+    prize_reason: string 
+    interaction_rating: number  // rating for the interaction on the group
+    interaction_reason: string 
+    additional_comments : string // general comment  
 }
